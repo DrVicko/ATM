@@ -1,5 +1,6 @@
 package ATM;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class TestATM 
@@ -11,12 +12,20 @@ public class TestATM
 		
 		while (selection != 0)
 		{
-			System.out.println("Insert: "
+			try
+			{
+			System.out.println("Welcome to Vedrans ATM menu, please insert: "
 					        + "\n1. To create new Account. "
 				        	+ "\n2. To transfer funds within existing accounts." +
 					          "\n3. To print existing accounts data. "
 					        + "\n4. To exit ATM. ");
 			selection = input.nextInt(); 
+			}
+			catch (InputMismatchException ex)
+			{
+				System.out.println("Incorrect input, please enter integer in range from 1 to 4:");
+				input.nextLine();
+			}
 			if (selection == 1)
 			{
 				System.out.println("\nEnter new Account number: ");
@@ -74,7 +83,6 @@ public class TestATM
 				System.out.println("ATM program ends, goodbye.");
 				break; 
 			}	
-			else System.out.println("You have entered wrong program selection.");
 		}
 
 	}
